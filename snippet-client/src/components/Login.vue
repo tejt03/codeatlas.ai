@@ -1,3 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 <!-- Login.vue -->
 <template>
   <div class="authPage">
@@ -64,7 +66,7 @@ export default {
       }
 
       try {
-        const response = await axios.post("http://localhost:8080/users/login", this.user);
+        const response = await axios.post(`${API_BASE_URL}/users/login`, this.user);
 
         const token = response.headers.authorization;
         if (token) localStorage.setItem("authToken", token);

@@ -1,3 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 <!-- Register.vue -->
 <template>
   <div class="authPage">
@@ -94,7 +96,7 @@ export default {
           .map((s) => s.trim())
           .filter(Boolean);
 
-        await axios.post("http://localhost:8080/users/register", payload);
+        await axios.post(`${API_BASE_URL}/users/register`, payload);
 
         this.$router.push("/login");
       } catch (error) {

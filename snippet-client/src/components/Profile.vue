@@ -1,3 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 <template>
   <div class="page" @click="closeProfileMenu">
     <!-- Top bar -->
@@ -386,7 +388,7 @@ export default {
     async fetchUser() {
       const { id } = this.$route.params;
       const response = await axios.get(
-        `http://localhost:8080/users/${id}?snippets=true&bookmarks=true`
+        `${API_BASE_URL}/users/${id}?snippets=true&bookmarks=true`
       );
 
       this.user = response.data;
@@ -429,7 +431,7 @@ export default {
           user_id: this.user._id,
         };
 
-        await axios.post("http://localhost:8080/snippets", payload, {
+        await axios.post(`${API_BASE_URL}/snippets`, payload, {
           headers: token ? { Authorization: token } : {},
         });
 
@@ -464,9 +466,9 @@ export default {
         const existing = this.getBookmarkForSnippet(snippetId);
 
         if (existing) {
-          await axios.delete(`http://localhost:8080/bookmarks/${existing._id}`);
+          await axios.delete(`${API_BASE_URL}/bookmarks/${existing._id}`);
         } else {
-          await axios.post("http://localhost:8080/bookmarks", {
+          await axios.post(`${API_BASE_URL}/bookmarks`, {
             user_id: this.user._id,
             snippet_id: snippetId,
           });
@@ -493,7 +495,7 @@ export default {
 
       // if not bookmarked, delete from DB
       try {
-        await axios.delete(`http://localhost:8080/snippets/${id}`);
+        await axios.delete(`${API_BASE_URL}/snippets/${id}`);
         await this.fetchUser();
       } catch {
         // restore on failure
@@ -535,7 +537,7 @@ export default {
           return;
         }
 
-        const res = await axios.post("http://localhost:8080/snippets/explain", { code });
+        const res = await axios.post(`${API_BASE_URL}/snippets/explain`, { code });
         this.explanations[id] = this.sanitizeExplanation(res.data.explanation);
       } catch (err) {
         this.explainError[id] = err.response?.data?.error || "Failed to generate explanation.";
