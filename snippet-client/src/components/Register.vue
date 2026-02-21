@@ -1,5 +1,3 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 <!-- Register.vue -->
 <template>
   <div class="authPage">
@@ -65,6 +63,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 <script>
 import axios from "axios";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default {
   data() {

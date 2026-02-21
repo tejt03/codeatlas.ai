@@ -1,5 +1,3 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 <!-- Login.vue -->
 <template>
   <div class="authPage">
@@ -46,6 +44,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 <script>
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export default {
   data() {
     return {
@@ -58,6 +58,9 @@ export default {
   },
   methods: {
     async login() {
+      console.log("login() clicked");
+      console.log("API_BASE_URL =", API_BASE_URL);
+      
       this.error = null;
 
       if (!this.user.username || !this.user.password) {
