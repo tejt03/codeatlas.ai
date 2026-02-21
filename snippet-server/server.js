@@ -6,7 +6,11 @@ const mongo = require('./mongo');
 
 const app = express();
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
 
 // options object to expose header to the client
 const options = { exposedHeaders: ['Authorization'] };
@@ -27,8 +31,4 @@ app.use('/users', users);
 app.use('/snippets', snippets);
 app.use('/bookmarks', bookmarks);
 
-// start the express server and connect to mongo
-app.listen(PORT, async () => {
-    console.log(`Server is listening on port ${PORT}`);
-    await mongo.connectDB();
-});
+
