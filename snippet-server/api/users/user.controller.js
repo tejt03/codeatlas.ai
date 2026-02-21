@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('./user.model');
 
-const config = require('../../config.json');
+const JWT_SECRET = JWT_SECRET;
 
 const registerUser = async (req, res) => {
   const { body } = req;
@@ -82,7 +82,7 @@ const loginUser = async (req, res) => {
     if (authenticated) {
       const token = jwt.sign(
         { id: user._id, username: user.username },
-        config.jwtsecret,
+        JWT_SECRET,
         { expiresIn: '24h' }
       );
 
