@@ -108,7 +108,7 @@ export default {
 </script>
 
 <style scoped>
-/* Match Profile.vue light theme */
+
 .authPage {
   min-height: 100vh;
   padding: 26px;
@@ -124,8 +124,8 @@ export default {
 
 .authCard {
   width: 100%;
-  max-width: 460px;     /* less wide */
-  min-height: 480px;    /* a bit taller */
+  max-width: 460px;     
+  min-height: 480px;   
   border-radius: 18px;
   padding: 22px;
   background: rgba(255, 255, 255, 0.84);
@@ -142,7 +142,7 @@ export default {
   font-size: 30px; 
   font-weight: 900;
   letter-spacing: 0.2px;
-  color: rgba(39, 183, 199, 0.948); /* match button */
+  color: rgba(39, 183, 199, 0.948); 
   text-align: center;
 }
 
@@ -179,7 +179,7 @@ export default {
 
 .field label {
   display: block;
-  font-size: 13px; /* a bit larger */
+  font-size: 13px; 
   font-weight: 800;
   color: rgba(15, 23, 42, 0.80);
   margin-bottom: 7px;
@@ -199,7 +199,7 @@ export default {
 }
 
 .field input::placeholder {
-  font-size: 11px; /* smaller placeholder text */
+  font-size: 11px; 
   color: rgba(15, 23, 42, 0.45);
 }
 

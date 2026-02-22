@@ -1,4 +1,4 @@
-/* Resetting margins, paddings, and borders */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,18 +6,16 @@
   box-sizing: border-box;
 }
 
-/* Resetting list styles */
 ul,
 ol {
   list-style: none;
 }
 
-/* Resetting anchor text decoration */
 a {
   text-decoration: none;
 }
 
-/* Resetting heading margins */
+
 h1,
 h2,
 h3,
@@ -27,7 +25,6 @@ h6 {
   margin: 0;
 }
 
-/* Resetting paragraph margin */
 p {
   margin: 0;
 }

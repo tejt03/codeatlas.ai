@@ -1108,7 +1108,7 @@ export default {
   border-color: rgba(39, 184, 199, 1);
 }
 
-/* 3) Red X button */
+/* Red X button */
 .closeBtn {
   background: rgba(239, 10, 10, 0.171);
   border-color: rgba(255, 90, 90, 0.22);
@@ -1132,20 +1132,19 @@ export default {
 }
 
 /* Modal */
-/* Fix 1: make overlay truly dim the page */
 .modalOverlay {
   position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.55);
   display: flex;
-  align-items: flex-start;   /* start at top instead of vertical center */
+  align-items: flex-start;   
   justify-content: center;
-  padding: 40px 18px;        /* space top & bottom */
-  overflow-y: auto;          /* <-- KEY: enables scroll */
+  padding: 40px 18px;        
+  overflow-y: auto;          
   z-index: 1000;
 }
 
-/* modal should not trap height */
+
 .modal {
   width: 100%;
   max-width: 980px;
@@ -1155,7 +1154,7 @@ export default {
   box-shadow: 0 30px 90px rgba(15, 23, 42, 0.25);
   padding: 16px;
 
-  max-height: none;          /* remove viewport lock */
+  max-height: none;        
 }
 
 .modalBody {

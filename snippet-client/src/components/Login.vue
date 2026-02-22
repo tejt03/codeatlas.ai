@@ -101,8 +101,8 @@ export default {
 
 .authCard {
   width: 100%;
-  max-width: 460px;   /* slightly less wide */
-  min-height: 420px;  /* taller like typical auth pages */
+  max-width: 460px;   
+  min-height: 420px; 
   border-radius: 18px;
   padding: 24px;
   background: rgba(255, 255, 255, 0.84);
