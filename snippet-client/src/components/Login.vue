@@ -3,8 +3,8 @@
   <div class="authPage">
     <div class="authCard">
       <div class="authHeader">
-        <div class="brandTitle">Snippet Application</div>
-        <div class="brandSub">Sign in to manage and bookmark snippets</div>
+        <div class="brandTitle">CodeAtlas AI</div>
+        <div class="brandSub">Sign in to manage your code snippets</div>
       </div>
 
       <form class="authForm" @submit.prevent="login">
@@ -60,7 +60,7 @@ export default {
     async login() {
       console.log("login() clicked");
       console.log("API_BASE_URL =", API_BASE_URL);
-      
+
       this.error = null;
 
       if (!this.user.username || !this.user.password) {

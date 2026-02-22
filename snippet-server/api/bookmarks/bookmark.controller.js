@@ -18,7 +18,7 @@ const createBookmark = async (req, res) => {
 
     return res.json(bookmark);
   } catch (error) {
-    // handle duplicate index race conditions
+
     if (error.code === 11000) {
       const existing = await Bookmark.findOne({ snippet_id, user_id });
       return res.status(200).json(existing);

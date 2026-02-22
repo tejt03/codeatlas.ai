@@ -4,22 +4,17 @@ require("dotenv").config();
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const MODEL = "llama-3.1-8b-instant";
 
-// Minimal sanitizer to remove common markdown artifacts from model output
 const stripMarkdown = (text) => {
   if (!text) return "";
   return text
-    // bold/italic markers
+   
     .replace(/\*\*(.*?)\*\*/g, "$1")
     .replace(/\*(.*?)\*/g, "$1")
     .replace(/__(.*?)__/g, "$1")
     .replace(/_(.*?)_/g, "$1")
-    // inline code/backticks
     .replace(/`{1,3}/g, "")
-    // headings
     .replace(/^#{1,6}\s+/gm, "")
-    // blockquote markers
     .replace(/^>\s?/gm, "")
-    // excessive blank lines
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 };
@@ -83,7 +78,7 @@ const explainSnippet = async (req, res) => {
     const status = error.response?.status;
     const data = error.response?.data;
 
-    // Keep these logs (useful for diagnosing production issues)
+    
     console.error("Groq error status:", status);
     console.error("Groq error body:", data);
     console.error("Groq error message:", error.message);

@@ -3,8 +3,8 @@
   <div class="authPage">
     <div class="authCard">
       <div class="authHeader">
-        <div class="brandTitle">Snippet Application</div>
-        <div class="brandSub">Create an account to manage and bookmark snippets</div>
+        <div class="brandTitle">CodeAtlas AI</div>
+        <div class="brandSub">Create an account to manage your code snippets</div>
       </div>
 
       <form class="authForm" @submit.prevent="register">

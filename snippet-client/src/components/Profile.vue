@@ -3,12 +3,11 @@
     <!-- Top bar -->
     <header class="topbar">
       <div class="brand">
-        <div class="brandTitle">Snippet Application</div>
+        <div class="brandTitle">CodeAtlas AI</div>
         <div class="brandSub">Store, bookmark, and understand code snippets</div>
       </div>
 
       <div class="profileArea" @click.stop>
-        <!-- Avatar is the trigger (no arrow, no Active pill) -->
         <button class="profileBtn" @click="toggleProfileMenu" aria-label="Open profile menu">
           <img :src="pic" class="avatar" alt="profile avatar" />
 
@@ -95,9 +94,8 @@
         </div>
       </section>
 
-      <!-- Right column -->
+  
       <section class="col right">
-        <!-- Add Snippet (inline) -->
         <div v-if="showAddForm" class="card elevated">
           <div class="cardHeader">
             <h2 class="h2">Add Snippet</h2>
@@ -158,7 +156,6 @@
                   <div class="snippetMeta">{{ s.programming_language }}</div>
                 </div>
 
-                <!-- Star (no count) + Close -->
                 <div class="snippetTopRight">
                   <button
                     class="starBtn"
@@ -228,8 +225,6 @@
       </section>
     </main>
 
-    <!-- Bookmark modal -->
-    <!-- Replace ONLY the modal block in your template with this -->
     <div v-if="bookmarkModal.open" class="modalOverlay" @click="closeBookmarkModal">
     <div class="modal" @click.stop>
         <div class="modalHeader">
@@ -254,9 +249,8 @@
         </div>
         </div>
 
-        <!-- NEW: two-column content -->
+ 
         <div class="modalBody">
-        <!-- Left: code + actions -->
         <div class="modalLeft">
             <div class="modalCodeWrap">
             <pre class="codeBlock modalCode" v-if="bookmarkModal.snippet?.code_snippet">
@@ -281,7 +275,7 @@
             </div>
         </div>
 
-        <!-- Right: explanation -->
+
         <div class="modalRight">
             <div v-if="bookmarkModal.snippet && explainError[bookmarkModal.snippet._id]" class="inlineError">
             {{ explainError[bookmarkModal.snippet._id] }}
@@ -293,7 +287,7 @@
             </div>
 
             <div v-else class="empty">
-            Generate an explanation to see it here.
+            Generate an explanation to view it here.
             </div>
         </div>
     </div>
@@ -370,7 +364,6 @@ export default {
   },
 
   methods: {
-    // --- auth / logout ---
     toggleProfileMenu() {
       this.showProfileMenu = !this.showProfileMenu;
     },
@@ -384,7 +377,6 @@ export default {
       this.$router.push("/login");
     },
 
-    // --- data ---
     async fetchUser() {
       const { id } = this.$route.params;
       const response = await axios.get(
@@ -395,7 +387,6 @@ export default {
       this.pic = `https://api.dicebear.com/7.x/initials/svg?seed=${this.user.username}+&backgroundColor=27b8c7`;
     },
 
-    // --- add snippet ---
     openAddForm() {
       this.addError = "";
       this.showAddForm = true;
@@ -483,17 +474,12 @@ export default {
       }
     },
 
-    // --- snippet close/delete behavior ---
+
     async closeSnippet(snippet) {
       const id = snippet._id;
 
-      // always hide from UI immediately
       this.hiddenSnippetIds.add(id);
-
-      // if bookmarked, only hide
       if (this.isBookmarked(id)) return;
-
-      // if not bookmarked, delete from DB
       try {
         await axios.delete(`${API_BASE_URL}/snippets/${id}`);
         await this.fetchUser();

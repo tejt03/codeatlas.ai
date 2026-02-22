@@ -78,7 +78,7 @@ const deleteSnippet = async (req, res) => {
 };
 
 // GET /snippets/bookmark-counts
-// returns: { counts: { "<snippetId>": <number>, ... } }
+
 const getBookmarkCounts = async (req, res) => {
   try {
     const results = await Bookmark.aggregate([

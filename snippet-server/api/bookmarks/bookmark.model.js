@@ -11,7 +11,6 @@ const BookmarkSchema = new mongoose.Schema({
   }
 });
 
-// prevent duplicate bookmarks per user+snippet
 BookmarkSchema.index({ user_id: 1, snippet_id: 1 }, { unique: true });
 
 const Bookmark = mongoose.model('Bookmark', BookmarkSchema);

@@ -20,15 +20,15 @@ const SnippetSchema = new mongoose.Schema(
     }
 );
 
-// Define a virtual property to retrieve bookmarks associated with the snippet
+
 SnippetSchema.virtual('bookmarks', {
     ref: 'Bookmark',
     localField: '_id',
     foreignField: 'snippet_id'
 });
 
-// .post to delete associated bookmarks when a snippet is deleted
-// doc argument refers to the deleted snippet document
+
+
 SnippetSchema.post('findOneAndDelete', async function (doc) {
     const Bookmark = mongoose.model('Bookmark');
 

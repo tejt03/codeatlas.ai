@@ -19,12 +19,11 @@ app.use(cors(options));
 // middleware to parse POST/PUT bodies in express
 app.use(express.json());
 
-// require in our resource routes
 const users = require('./api/users/user.routes.js');
 const snippets = require('./api/snippets/snippet.routes.js');
 const bookmarks = require('./api/bookmarks/bookmark.routes.js');
 
-// mount the resource routes to our express app
+// mount the resource routes to express app
 app.use('/users', users);
 app.use('/snippets', snippets);
 app.use('/bookmarks', bookmarks);
