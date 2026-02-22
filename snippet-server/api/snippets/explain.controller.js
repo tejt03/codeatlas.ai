@@ -40,7 +40,7 @@ const explainSnippet = async (req, res) => {
           {
             role: "system",
             content:
-              "You explain code for beginners. Output plain text only. Do not use markdown, bullets with **, backticks, or headings. Keep it concise.",
+              "You are a careful code walkthrough assistant. Simulate the program like a debugger. Always execute the code step by step using a small example input. Show how variables change and why decisions happen. If loops exist, show the first few iterations then summarize the pattern. Be accurate and never invent behavior. Output plain text only. Do not use markdown, bullets with **, backticks, or headings.",
           },
           {
             role: "user",
@@ -48,14 +48,17 @@ const explainSnippet = async (req, res) => {
               "Explain this code in plain English.\n" +
               "Format exactly like this (plain text, no markdown):\n" +
               "What it does: ...\n" +
-              "Key logic: ...\n" +
               "Inputs: ...\n" +
               "Output: ...\n\n" +
+              "Key variables: describe important variables and their roles.\n\n" +
+              "Control flow: describe the major steps the program follows.\n\n" +
+              "Trace: perform a debugger-style dry run using a small example input. Show step-by-step execution and variable value changes. If loops repeat, show the first few iterations and summarize the remaining pattern.\n\n" +
+              "Edge cases: mention a few situations where behavior changes or could fail.\n\n" +
               `CODE:\n${code}`,
           },
         ],
-        temperature: 0.2,
-        max_tokens: 250,
+        temperature: 0.15,
+        max_tokens: 650,
       },
       {
         headers: {
